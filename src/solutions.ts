@@ -1,34 +1,36 @@
-export
-// problem-1
+
 const multiplyValue = (num: number, multiplyer?: number) => {
-    if (multiplyer) console.log(num * multiplyer)
-    else console.log(num)
+    if (multiplyer) return num * multiplyer
+    else  return num
 }
 
-// problem-2
+
 type IInput = string | number | boolean
 const processInput = (value:IInput) => {
     if(typeof value ===  "string") {
-      console.log(value.trim().toLowerCase())  
+      return value.trim().toLowerCase()  
     }
     if(typeof value === "number") {
-        console.log(value * 10)
+        return (value * 10)
     }
-    value === true? console.log("Active") : console.log("Inactive") 
+   if(value === true) return "Active"
+    else return "Inactive"
 }
 
-// problem-3
+
 type Coordinate = readonly [latitude:number, longitude:number, locationName:string];
 const formatCoordinate = (coordinate:Coordinate):string => {
 const [latitude, longitude, locationName]= coordinate;
-return `Location ${locationName} ${latitude} ${longitude}`
+return `location ${locationName} ${latitude} ${longitude}`
 }
 
-// problem-4
+
 const concatenateArrays = <T>(...arr: T[][]): T[] => {
-  return arr.reduce<T[]>((result, array) => result.concat(array), []);
+  return arr.reduce<T[]>((result, aray) => result.concat(aray), []);
 }
-//problem-5
+
+
+
 interface Course {
   title: string;
   students: number;
@@ -43,18 +45,13 @@ const getPopularCourses = (courses: Course[], minStudents: number): Course[] => 
 }
 
 
-//probem-6
+
 const pluckValues = <T, K extends keyof T>(items: T[], key: K): T[K][] => {
   return items.map((item) => item[key]);
 }
 
-const users = [
-  { id: 1, name: "Rakib", role: "Admin" },
-  { id: 2, name: "Sadia", role: "Editor" },
-  { id: 3, name: "Tariq", role: "Subscriber" },
-];
 
-// problem-7
+
 class Employee {
   protected name: string;
   private baseSalary: number;
@@ -63,7 +60,6 @@ class Employee {
     this.name = name;
     this.baseSalary = baseSalary;
   }
-
   getDetails(): string {
     return `Employee: ${this.name}, Base Salary: ${this.baseSalary}`;
   }
@@ -84,14 +80,14 @@ class Manager extends Employee {
 
 const manager = new Manager("Alice", 50000, "Engineering");
 
-// problem -8
+
+
 const validateAgeAsync = async(age: number): Promise<string> => {
   if (age < 18) {
     throw new Error("Access deied: Must be 18 or older");
   }
 
   return new Promise<string>((res) => {
-    setTimeout(() => console.log("access granted"), 1000);
+    setTimeout(() => console.log("Access Granted"), 1000);
   });
 }
-await validateAgeAsync(2);

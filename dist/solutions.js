@@ -1,41 +1,35 @@
-export 
-// problem-1
+"use strict";
 const multiplyValue = (num, multiplyer) => {
     if (multiplyer)
-        console.log(num * multiplyer);
+        return num * multiplyer;
     else
-        console.log(num);
+        return num;
 };
 const processInput = (value) => {
     if (typeof value === "string") {
-        console.log(value.trim().toLowerCase());
+        return value.trim().toLowerCase();
     }
     if (typeof value === "number") {
-        console.log(value * 10);
+        return (value * 10);
     }
-    value === true ? console.log("Active") : console.log("Inactive");
+    if (value === true)
+        return "Active";
+    else
+        return "Inactive";
 };
 const formatCoordinate = (coordinate) => {
     const [latitude, longitude, locationName] = coordinate;
-    return `Location ${locationName} ${latitude} ${longitude}`;
+    return `location ${locationName} ${latitude} ${longitude}`;
 };
-// problem-4
 const concatenateArrays = (...arr) => {
-    return arr.reduce((result, array) => result.concat(array), []);
+    return arr.reduce((result, aray) => result.concat(aray), []);
 };
 const getPopularCourses = (courses, minStudents) => {
     return courses.filter((course) => course.isPublished && course.students >= minStudents);
 };
-//probem-6
 const pluckValues = (items, key) => {
     return items.map((item) => item[key]);
 };
-const users = [
-    { id: 1, name: "Rakib", role: "Admin" },
-    { id: 2, name: "Sadia", role: "Editor" },
-    { id: 3, name: "Tariq", role: "Subscriber" },
-];
-// problem-7
 class Employee {
     name;
     baseSalary;
@@ -58,13 +52,11 @@ class Manager extends Employee {
     }
 }
 const manager = new Manager("Alice", 50000, "Engineering");
-// problem -8
 const validateAgeAsync = async (age) => {
     if (age < 18) {
         throw new Error("Access deied: Must be 18 or older");
     }
     return new Promise((res) => {
-        setTimeout(() => console.log("access granted"), 1000);
+        setTimeout(() => console.log("Access Granted"), 1000);
     });
 };
-await validateAgeAsync(2);
